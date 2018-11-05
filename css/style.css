@@ -186,7 +186,8 @@ body {
   box-shadow: 1px 1px 1px #212121, 0px 0px 1px #1F0407;
   display: inline-block;
   background: #731A19;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  min-height: 3rem; }
   .button--secondary {
     border: 1px solid #731A19;
     color: #731A19;
@@ -208,7 +209,7 @@ body {
   font-size: 14px; }
   @media (min-width: 780px) {
     .modal-box {
-      height: 75%;
+      height: 100%;
       width: 75%;
       font-size: 1.5rem; } }
   .modal-box__title {
