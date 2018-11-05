@@ -1,0 +1,337 @@
+$color-work: #3C803D;
+$color-break: #A68A13;
+$color-long-break: #A64013;
+
+$color-dark: #212121;
+$color-light: #FFFFFF;
+$color-primary: #731A19;
+$color-primary-dark: #1F0407;
+$color-secondary: #D19981;
+
+$hour-height: 4.16666667%;
+
+$one-minute: 0.06944444%;
+$one-minute-block: 0.86956522%;
+
+$desktop-width: 780px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: $color-dark;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  border-bottom: 2px solid $color-primary;
+
+  @include desktop {
+    width: 70%;
+  }
+
+  .image {
+    position: relative;
+    height: 30%;
+    max-height: 100px;
+    padding: 2rem 0 1rem 0;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .timer {
+    font-size: 3rem;
+    color: $color-primary;
+    position: relative;
+    padding: 2rem;
+  }
+
+  .addInfo {
+    font-size: 1.25rem;
+    color: $color-light;
+    background-color: $color-primary;
+    padding: 0 2rem;
+  }
+
+  .number-box {
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+    &__txt {
+      width: 2.5rem;
+      margin: .5rem;
+      padding: 0.4rem 0.4rem;
+      font-size: 1.5rem;
+      text-align: center;
+      border: 1px solid $color-dark;
+      border-radius: 6.2px;
+      box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+    }
+
+    &__range {
+      -webkit-appearance: none;
+      width: 80%;
+      margin: 1rem 0;
+      padding: 0.5rem;
+
+      &:focus {
+        outline: none;
+      }
+      &::-webkit-slider-runnable-track {
+        width: 80%;
+        height: 1rem;
+        background: $color-light;
+        border-radius: 0.5rem;
+        border: 0.7px solid #562425;
+        box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+        cursor: pointer;
+      }
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 2.5rem;
+        width: 1.5rem;
+        margin-top: -0.8rem;
+        border-radius: 0.2rem;
+        background: $color-primary;
+        box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+        border: 0.1rem solid $color-dark;
+        cursor: pointer;
+      }
+      &:focus::-webkit-slider-runnable-track {
+        background: $color-light;
+      }
+      &::-moz-range-track {
+        width: 80%;
+        height: 1rem;
+        cursor: pointer;
+        box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+        background: $color-light;
+        border-radius: 0.5rem;
+        border: 0.5rem solid $color-primary;
+      }
+      &::-moz-range-thumb {
+        height: 2.5rem;
+        width: 1.5rem;
+        margin-top: -0.8rem;
+        border-radius: 0.2rem;
+        background: $color-primary;
+        box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+        border: 0.1rem solid $color-dark;
+        cursor: pointer;
+      }
+      &::-ms-track {
+        width: 100%;
+        height: 1rem;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+      &::-ms-fill-lower {
+        background: $color-secondary;
+        border: 0.1rem solid $color-primary;
+        border-radius: 12.4px;
+        box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+      }
+      &::-ms-fill-upper {
+        background: $color-secondary;
+        border: 0.1rem solid $color-primary;
+        border-radius: 12.4px;
+        box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+      }
+      &::-ms-thumb {
+        box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+        border: 0.2rem solid $color-dark;
+        height: 39px;
+        width: 19px;
+        border-radius: 2px;
+        background: $color-primary;
+        cursor: pointer;
+      }
+      &:focus::-ms-fill-lower {
+        background: $color-secondary;
+      }
+      &:focus::-ms-fill-upper {
+        background: $color-secondary;
+      }
+    }
+  }
+
+  .scroll-box {
+    width: 100%;
+    max-height: 100%;
+    margin-top: 4rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-top: 2px solid $color-primary;
+    border-bottom: 2px solid $color-primary;
+
+    .timeline {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      background-color:  $color-secondary * 1.8;
+
+      &__half-hour {
+        height: 30px;
+        border-top: 1px solid $color-dark;
+        box-sizing: border-box;
+        font-size: 0.75rem;
+      }
+
+      &__hours {
+        width: 2rem;
+        height: 100%;
+      }
+
+      &__tasks {
+        position: relative;
+        width: 100%;
+        background-color: transparent;
+        z-index: 1;
+
+        .task {
+          position: absolute;
+          width: 100%;
+          font-size: 1rem;
+          height: $one-minute * 115;
+
+          &--work {
+            height: $one-minute * 115;
+          }
+
+          &--break {
+            background-color: $color-long-break;
+            height: $one-minute * 30;
+          }
+
+          &__single {
+            &--work {
+              background-color: $color-work;
+              height: $one-minute-block * 25;
+            }
+            &--break {
+              background-color: $color-break;
+
+              height: $one-minute-block * 5;
+            }
+          }
+        }
+      }
+    }
+
+    .current-time {
+      height: 2px;
+      background-color: $color-primary;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+}
+
+.button {
+  margin: 0.5rem;
+  padding: 0.7rem 0.7rem;
+  font-size: 1.2rem;
+  text-align: center;
+  border: 1px solid $color-dark;
+  border-radius: 6.2px;
+  width: 3.5rem;
+  box-shadow: 1px 1px 1px $color-dark, 0px 0px 1px $color-primary-dark;
+  display: inline-block;
+  background: $color-primary;
+  color: $color-light;
+
+  &--secondary {
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    background: $color-light;
+  }
+}
+
+.modal-box {
+  position: absolute;
+  height: 95%;
+  width: 95%;
+  background-color: $color-secondary;
+  display: flex;
+  border-radius: 10px;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  align-self: center;
+  flex-direction: column;
+  font-size: 14px;
+
+  @include desktop {
+    height: 75%;
+    width: 75%;
+    font-size: 1.5rem;
+  }
+
+  &__title {
+    font-size: 2em;
+    margin: 0;
+    &--sub {
+      font-size: 1.5em;
+    }
+  }
+
+  &__text {
+    font-size: 1.1em;
+    padding: 1em;
+    margin: 0;
+  }
+
+  .modal-box__table {
+    padding: 1rem 0;
+  }
+
+  &__colorbox {
+    border-radius: 3px;
+    min-width: 8rem;
+    font-size: 1.15rem;
+    text-align: center;
+    margin: 0.1rem;
+
+    &--work {
+      background-color: $color-work;
+    }
+
+    &--break {
+      background-color: $color-break;
+    }
+    &--long-break {
+      background-color: $color-long-break;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
